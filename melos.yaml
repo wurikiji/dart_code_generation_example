@@ -1,0 +1,13 @@
+name: beat
+
+ide:
+  intellij: false
+
+packages:
+  - packages/**
+  - examples/**
+  - tools/**
+
+command:
+  bootstrap:
+    usePubspecOverrides: true

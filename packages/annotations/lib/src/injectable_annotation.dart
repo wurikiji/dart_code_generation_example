@@ -1,0 +1,3 @@
+class Injectable {
+  const Injectable();
+}

@@ -1,0 +1,24 @@
+# https://github.com/dart-lang/build/blob/master/docs/build_yaml_format.md
+
+targets:
+  $default:
+    builders:
+      generators|injectable:
+        enabled: true
+      generators|responsive_widget:
+        enabled: true
+
+builders:
+  generators|injectable:
+    import: "package:generators/builders.dart"
+    builder_factories: ["injectableBuilder"]
+    build_extensions: { ".dart": [".g.dart"] }
+    auto_apply: dependents
+    build_to: source
+
+  generators|responsive_widget:
+    import: "package:generators/builders.dart"
+    builder_factories: ["responsiveWidgetBuilder"]
+    build_extensions: { ".dart": [".g.dart"] }
+    auto_apply: dependents
+    build_to: source
