@@ -5,7 +5,11 @@ targets:
     builders:
       generators|injectable:
         enabled: true
-      generators|responsive_widget:
+      generators|responsiveWidget:
+        enabled: true
+      generators|getterSetter:
+        enabled: true
+      source_gen:combining_builder:
         enabled: true
 
 builders:
@@ -14,11 +18,21 @@ builders:
     builder_factories: ["injectableBuilder"]
     build_extensions: { ".dart": [".g.dart"] }
     auto_apply: dependents
-    build_to: source
+    build_to: cache
+    applies_builders: ["source_gen:combining_builder"]
 
-  generators|responsive_widget:
+  generators|responsiveWidget:
     import: "package:generators/builders.dart"
     builder_factories: ["responsiveWidgetBuilder"]
     build_extensions: { ".dart": [".g.dart"] }
     auto_apply: dependents
-    build_to: source
+    build_to: cache
+    applies_builders: ["source_gen:combining_builder"]
+
+  generators|getterSetter:
+    import: "package:generators/builders.dart"
+    builder_factories: ["getterSetterBuilder"]
+    build_extensions: { ".dart": [".g.dart"] }
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen:combining_builder"]

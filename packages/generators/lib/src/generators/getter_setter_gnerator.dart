@@ -3,13 +3,17 @@ import 'package:annotations/annotations.dart';
 import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
 
-class InjectableGenerator extends GeneratorForAnnotation<Injectable> {
+class GetterSetterGenerator extends GeneratorForAnnotation<GetterSetter> {
   @override
   generateForAnnotatedElement(
     Element element,
     ConstantReader annotation,
     BuildStep buildStep,
   ) {
-    return '';
+    return r'''
+extension on MyClass {
+  int get hello => _hello;
+}
+''';
   }
 }

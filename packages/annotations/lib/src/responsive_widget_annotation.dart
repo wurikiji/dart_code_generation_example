@@ -3,11 +3,11 @@ class Responsive {
 }
 
 class WidthFrom {
-  final int length;
   const WidthFrom(this.length);
+  final int length;
 }
 
 class HeightFrom {
-  final int length;
   const HeightFrom(this.length);
+  final int length;
 }
