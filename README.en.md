@@ -11,11 +11,9 @@ This repository contains examples of using Dart's build system to generate code.
 You need to install [melos](https://melos.invertase.dev/getting-started) first.
 
 ```bash
+# You can skip the first command if you installed melos already
 $> dart pub global activate melos # or follow the instructions from the link above
-$> melos bs
-$> cd packages/generators
-$> dart pub get
-$> dart run build_runner test
+$> melos test
 ```
 
 ## Directory structure

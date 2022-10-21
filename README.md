@@ -13,11 +13,9 @@
 [melos](https://melos.invertase.dev/getting-started)를 먼저 설치해야 합니다.
 
 ```bash
+# melos 설치를 하셨다면 첫 커맨드는 생략해도 됩니다.
 $> dart pub global activate melos # 혹은 위의 melos 링크를 참조하세요
-$> melos bs
-$> cd packages/generators
-$> dart pub get
-$> dart run build_runner test
+$> melos test
 ```
 
 ## 프로젝트 구성

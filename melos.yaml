@@ -8,6 +8,10 @@ packages:
   - examples/**
   - tools/**
 
+scripts:
+  test:
+    run: melos bs && cd packages/generators && dart run build_runner test
+
 command:
   bootstrap:
     usePubspecOverrides: true
