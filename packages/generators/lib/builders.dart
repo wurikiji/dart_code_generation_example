@@ -11,9 +11,7 @@ import 'src/generators/getter_setter_gnerator.dart';
 Builder getterSetterBuilder(BuilderOptions options) {
   return SharedPartBuilder(
     [
-      GetterGenerator(),
-      SetterGenerator(),
-      ClassGSGenerator(),
+      GetterSetterGenerator(),
     ],
     'getter_setter_builder',
   );

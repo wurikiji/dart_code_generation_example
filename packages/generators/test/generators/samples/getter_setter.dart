@@ -14,7 +14,10 @@ int _setterOnly = 0;
 @setter
 int _both = 0;
 
-@applyGS
+@getter
+@setter
+int public = 0;
+
 class GetterSetterClass {
   @getter
   int _getterOnly = 0;
@@ -25,4 +28,8 @@ class GetterSetterClass {
   @getter
   @setter
   int _both = 0;
+
+  @getter
+  @setter
+  int public = 0;
 }

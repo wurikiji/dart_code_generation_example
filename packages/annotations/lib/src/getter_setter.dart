@@ -9,9 +9,3 @@ class Setter {
 }
 
 const setter = Setter();
-
-class ApplyGS {
-  const ApplyGS();
-}
-
-const applyGS = ApplyGS();
