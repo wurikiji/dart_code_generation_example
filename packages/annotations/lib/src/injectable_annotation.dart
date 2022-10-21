@@ -1,3 +1,0 @@
-class Injectable {
-  const Injectable();
-}
