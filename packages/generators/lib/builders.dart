@@ -33,6 +33,7 @@ Builder getterSetterBuilder(BuilderOptions options) {
     [
       GetterGenerator(),
       SetterGenerator(),
+      ClassGSGenerator(),
     ],
     'getter_setter_builder',
   );

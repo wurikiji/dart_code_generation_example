@@ -14,3 +14,15 @@ int _setterOnly = 0;
 @setter
 int _both = 0;
 
+@applyGS
+class GetterSetterClass {
+  @getter
+  int _getterOnly = 0;
+
+  @setter
+  int _setterOnly = 0;
+
+  @getter
+  @setter
+  int _both = 0;
+}

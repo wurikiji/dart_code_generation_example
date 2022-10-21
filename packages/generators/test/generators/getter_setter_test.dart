@@ -22,4 +22,23 @@ Future<void> main() async {
     });
   });
 
+  group('GetterSetter annotation on class fields', () {
+    test('can generate getter', () {
+      final instance = GetterSetterClass();
+      expect(instance.getterOnly, 0);
+    });
+
+    test('can generate setter', () {
+      final instance = GetterSetterClass();
+      instance.setterOnly = 1;
+    });
+
+    test('can generate both on a same variable', () {
+      final instance = GetterSetterClass();
+      instance.both = 1;
+      expect(instance.both, 1);
+      instance.both = 2;
+      expect(instance.both, 2);
+    });
+  });
 }
