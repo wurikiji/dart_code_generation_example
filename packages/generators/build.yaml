@@ -3,17 +3,17 @@
 targets:
   $default:
     builders:
-      generators|injectable:
+      generators:injectable:
         enabled: true
-      generators|responsiveWidget:
+      generators:responsiveWidget:
         enabled: true
-      generators|getterSetter:
+      generators:getterSetter:
         enabled: true
       source_gen:combining_builder:
         enabled: true
 
 builders:
-  generators|injectable:
+  injectable:
     import: "package:generators/builders.dart"
     builder_factories: ["injectableBuilder"]
     build_extensions: { ".dart": [".g.dart"] }
@@ -21,7 +21,7 @@ builders:
     build_to: cache
     applies_builders: ["source_gen:combining_builder"]
 
-  generators|responsiveWidget:
+  responsiveWidget:
     import: "package:generators/builders.dart"
     builder_factories: ["responsiveWidgetBuilder"]
     build_extensions: { ".dart": [".g.dart"] }
@@ -29,7 +29,7 @@ builders:
     build_to: cache
     applies_builders: ["source_gen:combining_builder"]
 
-  generators|getterSetter:
+  getterSetter:
     import: "package:generators/builders.dart"
     builder_factories: ["getterSetterBuilder"]
     build_extensions: { ".dart": [".g.dart"] }

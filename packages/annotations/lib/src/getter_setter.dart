@@ -1,8 +1,11 @@
-class GetterSetter {
-  const GetterSetter({
-    this.getter = true,
-    this.setter = true,
-  });
-  final bool getter;
-  final bool setter;
+class Getter {
+  const Getter();
 }
+
+const getter = Getter();
+
+class Setter {
+  const Setter();
+}
+
+const setter = Setter();

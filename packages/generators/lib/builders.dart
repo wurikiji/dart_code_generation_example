@@ -12,21 +12,28 @@ import 'src/generators/responsive_widget_generator.dart';
 
 Builder injectableBuilder(BuilderOptions options) {
   return SharedPartBuilder(
-    [InjectableGenerator()],
+    [
+      InjectableGenerator(),
+    ],
     'injectable_generator',
   );
 }
 
 Builder responsiveWidgetBuilder(BuilderOptions options) {
   return SharedPartBuilder(
-    [ResponsiveWidgetGenerator()],
+    [
+      ResponsiveWidgetGenerator(),
+    ],
     'responsive_widget_generator',
   );
 }
 
 Builder getterSetterBuilder(BuilderOptions options) {
   return SharedPartBuilder(
-    [GetterSetterGenerator()],
+    [
+      GetterGenerator(),
+      SetterGenerator(),
+    ],
     'getter_setter_builder',
   );
 }
