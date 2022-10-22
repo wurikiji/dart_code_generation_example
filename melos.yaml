@@ -6,6 +6,7 @@ ide:
 packages:
   - packages/**
   - examples/**
+  - tests/**
   - tools/**
 
 scripts:

@@ -6,15 +6,15 @@ import 'samples/auto_dispose.dart';
 void main() {
   group('AutoDispose', () {
     test('can generate getter automatically', () {
-      final widget = AutoDisposeController();
+      const widget = AutoDisposeController();
       // can access to the getter
       widget.controller;
     });
 
     testWidgets('can create instance', (tester) async {
-      final widget = AutoDisposeController();
+      const widget = AutoDisposeController();
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(body: widget),
         ),
       );
@@ -57,9 +57,9 @@ void main() {
     });
 
     testWidgets('can create multiple auto disposer', (tester) async {
-      final widget = MultipleAutoDisposeTestWidget();
+      const widget = MultipleAutoDisposeTestWidget();
       await tester.pumpWidget(
-        MaterialApp(
+        const MaterialApp(
           home: Scaffold(body: widget),
         ),
       );
