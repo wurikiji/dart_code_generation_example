@@ -18,8 +18,9 @@ class GetterSetterGenerator extends Generator {
     final variableSetters = variables.toSetters();
 
     final classExtension = classes.map((e) {
-      final getters = e.fields.toGetters();
-      final setters = e.fields.toSetters();
+      final getters = e.fields.toGetters().trim();
+      final setters = e.fields.toSetters().trim();
+      if (getters.isEmpty && setters.isEmpty) return '';
       return '''
 extension ${e.name}GetterSetter on ${e.name} {
   $getters
@@ -32,6 +33,7 @@ extension ${e.name}GetterSetter on ${e.name} {
 $variableGetters
 $variableSetters
 $classExtension
-''';
+'''
+        .trim();
   }
 }
