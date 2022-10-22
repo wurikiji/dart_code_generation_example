@@ -10,9 +10,9 @@ packages:
 
 scripts:
   test:
-    run: melos bs && cd packages/generators && dart run build_runner test
+    run: melos bs && cd packages/generators && flutter pub run build_runner build && flutter test
   test-only:
-    run: cd packages/generators && dart run build_runner test
+    run: cd packages/generators && flutter test
 
 command:
   bootstrap:

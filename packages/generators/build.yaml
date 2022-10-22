@@ -5,11 +5,20 @@ targets:
     builders:
       generators:getterSetter:
         enabled: true
+      generators:autoDispose:
+        enabled: true
 
 builders:
   getterSetter:
     import: "package:generators/builders.dart"
     builder_factories: ["getterSetterBuilder"]
+    build_extensions: { ".dart": [".g.dart"] }
+    auto_apply: dependents
+    build_to: cache
+    applies_builders: ["source_gen:combining_builder"]
+  autoDispose:
+    import: "package:generators/builders.dart"
+    builder_factories: ["autoDisposeBuilder"]
     build_extensions: { ".dart": [".g.dart"] }
     auto_apply: dependents
     build_to: cache
