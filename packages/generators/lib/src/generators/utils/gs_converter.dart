@@ -25,7 +25,7 @@ abstract class ConvertVariable {
           'Getter/Setter annotation can only be used on variables and class fields',
         ),
         assert(
-          element.name!.isPrivate(),
+          element.isPrivate,
           'Getter/Setter annotation can only be used on private variables',
         );
 
@@ -36,21 +36,19 @@ abstract class ConvertVariable {
 }
 
 extension ConvertElementsToGetterSetter on Iterable<Element> {
-  String toGetters() =>
-      where(_annotatedWith<Getter>).map(ConvertToGetter.new).join('\n');
-  String toSetters() =>
-      where(_annotatedWith<Setter>).map(ConvertToSetter.new).join('\n');
-}
-
-extension ConvertElementToGetterSetter on Element {
-  String toGetter() => ConvertToGetter(this).toString();
-  String toSetter() => ConvertToSetter(this).toString();
+  String toGetters() => where((e) => e.isPrivate)
+      .where(_annotatedWith<Getter>)
+      .map(ConvertToGetter.new)
+      .join('\n');
+  String toSetters() => where((e) => e.isPrivate)
+      .where(_annotatedWith<Setter>)
+      .map(ConvertToSetter.new)
+      .join('\n');
 }
 
 bool _annotatedWith<T>(Element element) =>
-    TypeChecker.fromRuntime(T).hasAnnotationOfExact(element);
+    TypeChecker.fromRuntime(T).hasAnnotationOf(element);
 
 extension PublicPrivate on String {
   String toPublic() => replaceFirst(RegExp(r'^_+'), '');
-  bool isPrivate() => startsWith('_');
 }

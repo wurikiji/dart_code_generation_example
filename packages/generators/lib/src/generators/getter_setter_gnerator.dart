@@ -1,54 +1,39 @@
+import 'dart:async';
+
 import 'package:analyzer/dart/element/element.dart';
-import 'package:annotations/annotations.dart';
 import 'package:build/build.dart';
 import 'package:source_gen/source_gen.dart';
 
 import 'utils/gs_converter.dart';
 
-class ClassGSGenerator extends GeneratorForAnnotation<ApplyGS> {
+class GetterSetterGenerator extends Generator {
+  const GetterSetterGenerator();
+
   @override
-  generateForAnnotatedElement(
-    Element element,
-    ConstantReader annotation,
-    BuildStep buildStep,
-  ) {
-    if (element is! ClassElement) {
-      throw 'Only classes can be annotated with @ApplyGS';
-    }
-    final className = element.name;
-    return '''
-extension GetterSetterOn$className on $className {
-  ${element.fields.toGetters()}
-  ${element.fields.toSetters()}
+  FutureOr<String> generate(LibraryReader library, BuildStep buildStep) async {
+    final variables = library.allElements.whereType<VariableElement>();
+    final classes = library.allElements.whereType<ClassElement>();
+
+    final variableGetters = variables.toGetters();
+    final variableSetters = variables.toSetters();
+
+    final classExtension = classes.map((e) {
+      final getters = e.fields.toGetters().trim();
+      final setters = e.fields.toSetters().trim();
+      if (getters.isEmpty && setters.isEmpty) return '';
+      return '''
+extension ${e.name}GetterSetter on ${e.name} {
+  $getters
+  $setters
 }
 ''';
-  }
-}
+    }).join('\n');
 
-class GetterGenerator extends GeneratorForAnnotation<Getter> {
-  @override
-  generateForAnnotatedElement(
-    Element element,
-    ConstantReader annotation,
-    BuildStep buildStep,
-  ) {
-    if (element is! VariableElement) {
-      throw 'Getter annotation can only be used on variables';
-    }
-    return element.toGetter();
-  }
-}
-
-class SetterGenerator extends GeneratorForAnnotation<Setter> {
-  @override
-  generateForAnnotatedElement(
-    Element element,
-    ConstantReader annotation,
-    BuildStep buildStep,
-  ) {
-    if (element is! VariableElement) {
-      throw 'Setter annotation can only be used on variables';
-    }
-    return element.toSetter();
+    return '''
+$variableGetters
+$variableSetters
+$classExtension
+'''
+        .trim();
   }
 }
