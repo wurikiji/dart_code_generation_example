@@ -2,7 +2,7 @@
 
 import 'package:test/test.dart';
 
-import './samples/getter_setter.dart';
+import 'samples/getter_setter.dart';
 
 Future<void> main() async {
   group('GetterSetter annotation on global context', () {
