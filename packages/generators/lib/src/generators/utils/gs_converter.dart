@@ -37,14 +37,17 @@ abstract class ConvertVariable {
 
 extension ConvertElementsToGetterSetter on Iterable<Element> {
   String toGetters() => where((e) => e.isPrivate)
-      .where(_annotatedWith<Getter>)
+      .where(annotateWithGetter)
       .map(ConvertToGetter.new)
       .join('\n');
   String toSetters() => where((e) => e.isPrivate)
-      .where(_annotatedWith<Setter>)
+      .where(annotateWithSetter)
       .map(ConvertToSetter.new)
       .join('\n');
 }
+
+bool annotateWithGetter(Element element) => _annotatedWith<Getter>(element);
+bool annotateWithSetter(Element element) => _annotatedWith<Setter>(element);
 
 bool _annotatedWith<T>(Element element) =>
     TypeChecker.fromRuntime(T).hasAnnotationOf(element);

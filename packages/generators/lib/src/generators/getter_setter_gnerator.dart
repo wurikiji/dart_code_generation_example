@@ -14,8 +14,8 @@ class GetterSetterGenerator extends Generator {
     final variables = library.allElements.whereType<VariableElement>();
     final classes = library.allElements.whereType<ClassElement>();
 
-    final variableGetters = variables.toGetters();
-    final variableSetters = variables.toSetters();
+    final variableGetters = variables.toGetters().trim();
+    final variableSetters = variables.toSetters().trim();
 
     final classExtension = classes.map((e) {
       final getters = e.fields.toGetters().trim();
