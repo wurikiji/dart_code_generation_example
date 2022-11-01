@@ -54,7 +54,7 @@ int _setterOnly= 0;
         reader: await PackageAssetReader.currentIsolate(),
       );
     });
-    test('can generate getter only', () async {
+    test('can generate both', () async {
       await testBuilder(
         getterSetterBuilder(BuilderOptions.empty),
         {
@@ -161,7 +161,7 @@ int _setterOnly= 0;
         reader: await PackageAssetReader.currentIsolate(),
       );
     });
-    test('can generate getter only', () async {
+    test('can generate both', () async {
       await testBuilder(
         getterSetterBuilder(BuilderOptions.empty),
         {
