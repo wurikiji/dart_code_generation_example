@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_final_fields
+// ignore_for_file: prefer_final_fields, unused_element, unused_field
 
 import 'package:annotations/annotations.dart';
 
