@@ -15,8 +15,11 @@
 ```bash
 # melos 설치를 하셨다면 첫 커맨드는 생략해도 됩니다.
 $> dart pub global activate melos # 혹은 위의 melos 링크를 참조하세요
-$> melos test
+$> melos bs
 ```
+
+이후에 원하는 패키지가 있는 디렉토리로 가서, dart 혹은 flutter 명령어들을
+실행해보세요!
 
 ## 프로젝트 구성
 
